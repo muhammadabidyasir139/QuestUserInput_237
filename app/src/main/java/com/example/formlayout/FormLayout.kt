@@ -64,7 +64,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(12.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             modifier = Modifier
-                .fillMaxWidth() // ✅ diperbaiki typo
+                .fillMaxWidth()
                 .padding(horizontal = 8.dp)
         ) {
             Column(
@@ -81,7 +81,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     value = textName,
                     onValueChange = { textName = it },
                     singleLine = true,
-                    shape = MaterialTheme.shapes.medium, // ✅ shapes (bukan shape)
+                    shape = MaterialTheme.shapes.medium,
                     modifier = Modifier.fillMaxWidth(),
                     label = { Text("Nama Lengkap") }
                 )
@@ -120,17 +120,17 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically // ✅ diperbaiki
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     statusPerkawinan.forEach { item ->
                         Row(
-                            verticalAlignment = Alignment.CenterVertically, // ✅
+                            verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier
                                 .weight(1f)
-                                .padding(horizontal = 4.dp) // ✅ hapus koma berlebih
+                                .padding(horizontal = 4.dp)
                         ) {
                             RadioButton(
-                                selected = selectedStatus == item, // ✅ typo diperbaiki
+                                selected = selectedStatus == item,
                                 onClick = { selectedStatus = item }
                             )
                             Text(text = item)
@@ -148,13 +148,13 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     onValueChange = { textAlamat = it },
                     shape = MaterialTheme.shapes.medium,
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Alamat") }, // ✅ typo diperbaiki
+                    label = { Text("Alamat") },
                     maxLines = 3
                 )
 
                 Button(
                     onClick = {
-                        // Di sini kamu bisa simpan atau tampilkan data
+
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7E3AFF)),
                     modifier = Modifier.fillMaxWidth()

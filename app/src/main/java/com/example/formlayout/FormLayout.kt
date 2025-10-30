@@ -3,38 +3,44 @@ package com.example.formlayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.runtime.Composable
-
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.ButtonDefaults
 
 @Composable
 fun FormDataDiri(modifier: Modifier = Modifier) {
     var textName by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
-    var SelectedJK by remember { mutableStateOf<String?>(null) }
-    var selectedStatus by remember { mutableStateOf<String>(null) }
-
-    var namaHasil by remember { mutableStateOf("") }
-    var alamatHasil by remember { mutableStateOf("") }
-    var jkHasil by remember { mutableStateOf("") }
-    var statusHasil by remember { mutableStateOf("") }
+    var selectedJK by remember { mutableStateOf<String?>(null) } // perbaiki penulisan
+    var selectedStatus by remember { mutableStateOf<String?>(null) }
 
     val gender = listOf("Laki-laki", "Perempuan")
     val statusPerkawinan = listOf("Janda", "Lajang", "Duda")
 
-    Column (
+    Column(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
@@ -45,12 +51,11 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             text = "Formulir Pendaftaran",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.white,
+            color = Color.White,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color(0xFFBB6BD9))
                 .padding(16.dp)
-                .wrapContentHeight()
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -59,7 +64,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(12.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             modifier = Modifier
-                .fillMaxWidht()
+                .fillMaxWidth() // ✅ diperbaiki typo
                 .padding(horizontal = 8.dp)
         ) {
             Column(
@@ -74,14 +79,15 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 )
                 OutlinedTextField(
                     value = textName,
-                    onValueChange = {textName = it},
+                    onValueChange = { textName = it },
                     singleLine = true,
-                    shape = MaterialTheme.shape.medium,
+                    shape = MaterialTheme.shapes.medium, // ✅ shapes (bukan shape)
                     modifier = Modifier.fillMaxWidth(),
-                    label = {Text("Nama Lengkap")}
+                    label = { Text("Nama Lengkap") }
                 )
+
                 Text(
-                    text = "jenis Kelamin",
+                    text = "Jenis Kelamin",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
@@ -89,22 +95,23 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
-                ){
-                    gender.forEach{item ->
-                        Row (
+                ) {
+                    gender.forEach { item ->
+                        Row(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(horizontal = 4.dp)
                         ) {
                             RadioButton(
-                                selected = selectedJK ==item,
-                                onClick = {selectedJK = item}
+                                selected = selectedJK == item,
+                                onClick = { selectedJK = item }
                             )
                             Text(text = item)
                         }
                     }
                 }
+
                 Text(
                     text = "Status Perkawinan",
                     fontWeight = FontWeight.Bold,
@@ -113,23 +120,24 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ){
+                    verticalAlignment = Alignment.CenterVertically // ✅ diperbaiki
+                ) {
                     statusPerkawinan.forEach { item ->
                         Row(
-                        verticalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .weight(1f),
-                            .padding(horizontal = 4.dp)
+                            verticalAlignment = Alignment.CenterVertically, // ✅
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(horizontal = 4.dp) // ✅ hapus koma berlebih
                         ) {
                             RadioButton(
-                                slected = selectedStatus ==item,
-                                onClick = {selectedStatus = item}
+                                selected = selectedStatus == item, // ✅ typo diperbaiki
+                                onClick = { selectedStatus = item }
                             )
-                        Text(text = item)
-                    }
+                            Text(text = item)
+                        }
                     }
                 }
+
                 Text(
                     text = "Alamat",
                     fontWeight = FontWeight.Bold,
@@ -137,19 +145,19 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 )
                 OutlinedTextField(
                     value = textAlamat,
-                    onValueChange = {textAlamat = it},
+                    onValueChange = { textAlamat = it },
                     shape = MaterialTheme.shapes.medium,
                     modifier = Modifier.fillMaxWidth(),
-                    label = {Text("Alamar")},
+                    label = { Text("Alamat") }, // ✅ typo diperbaiki
                     maxLines = 3
                 )
+
                 Button(
                     onClick = {
-                        namaHasil = textName
-                        alamatHasil = textAlamat
-                        jkHasil = selectedJK
-                        statusHasil = selectedStatus
+                        // Di sini kamu bisa simpan atau tampilkan data
                     },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7E3AFF)),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = "Submit", color = Color.White)
                 }

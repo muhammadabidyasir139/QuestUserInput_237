@@ -91,10 +91,9 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
-                Row(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     gender.forEach { item ->
                         Row(

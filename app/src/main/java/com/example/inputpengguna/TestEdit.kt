@@ -1,7 +1,10 @@
 package com.example.inputpengguna
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
@@ -17,5 +20,18 @@ fun FormDataDiri(modifier: Modifier
 
     val gender:List<string> = listOf("Laki-laki", "Perempuan")
 
-
+    Column(modifier = Modifier.padding(top = 50.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        OutlinedTextField(
+            valur = textNama,
+            singLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(width = 250.dp),
+            label = {Text(text = "Nama Lengkap")},
+            onValueChange = {
+                textName = it
+            }
+        )
+    }
 }

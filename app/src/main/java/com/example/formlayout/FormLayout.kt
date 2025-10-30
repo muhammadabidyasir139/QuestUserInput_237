@@ -98,15 +98,16 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     gender.forEach { item ->
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(horizontal = 4.dp)
+                            modifier = Modifier.padding(vertical = 2.dp)
                         ) {
                             RadioButton(
                                 selected = selectedJK == item,
                                 onClick = { selectedJK = item }
                             )
-                            Text(text = item)
+                            Text(
+                                text = item,
+                                modifier = Modifier.padding(start = 4.dp)
+                            )
                         }
                     }
                 }
@@ -116,23 +117,24 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
-                Row(
+
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     statusPerkawinan.forEach { item ->
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(horizontal = 4.dp)
+                            modifier = Modifier.padding(vertical = 2.dp)
                         ) {
                             RadioButton(
                                 selected = selectedStatus == item,
                                 onClick = { selectedStatus = item }
                             )
-                            Text(text = item)
+                            Text(
+                                text = item,
+                                modifier = Modifier.padding(start = 4.dp)
+                            )
                         }
                     }
                 }

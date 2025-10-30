@@ -53,6 +53,12 @@ fun FormDataDiri(modifier: Modifier
         }
     }
     outlinedTextField(
-        value = textAlamat, 
+        value = textAlamat,
+        singleValue = true,
+        modifier = Modifier.width(width = 250.dp),
+        label = {Text(text = "Alamat Lengkap")},
+        onValueChange = {
+            textAlamat = it
+        }
     )
 }

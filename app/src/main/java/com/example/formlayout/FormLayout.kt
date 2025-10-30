@@ -12,19 +12,19 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.runtime.Composable
+
 
 @Composable
 fun FormDataDiri(modifier: Modifier = Modifier) {
     var textName by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
-    var SelectedJK by remember { mutableStateOf<string?>(null) }
-    var selectedStatus by remember { mutableStatetOf<string>(null) }
+    var SelectedJK by remember { mutableStateOf<String?>(null) }
+    var selectedStatus by remember { mutableStateOf<String>(null) }
 
     var namaHasil by remember { mutableStateOf("") }
     var alamatHasil by remember { mutableStateOf("") }
@@ -48,7 +48,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             color = Color.white,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color(0xFFBB6BD9))
+                .background(Color(0xFFBB6BD9))
                 .padding(16.dp)
                 .wrapContentHeight()
         )
@@ -132,8 +132,27 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 }
                 Text(
                     text = "Alamat",
-                    fontWeight = FontWeight
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
                 )
+                OutlinedTextField(
+                    value = textAlamat,
+                    onValueChange = {textAlamat = it},
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.fillMaxWidth(),
+                    label = {Text("Alamar")},
+                    maxLines = 3
+                )
+                Button(
+                    onClick = {
+                        namaHasil = textName
+                        alamatHasil = textAlamat
+                        jkHasil = selectedJK
+                        statusHasil = selectedStatus
+                    },
+                ) {
+                    Text(text = "Submit", color = Color.White)
+                }
             }
         }
     }

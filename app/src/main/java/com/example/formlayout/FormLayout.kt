@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
@@ -72,7 +74,65 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 )
                 OutlinedTextField(
                     value = textName,
-                    onValueChange = {textName = it}
+                    onValueChange = {textName = it},
+                    singleLine = true,
+                    shape = MaterialTheme.shape.medium,
+                    modifier = Modifier.fillMaxWidth(),
+                    label = {Text("Nama Lengkap")}
+                )
+                Text(
+                    text = "jenis Kelamin",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    gender.forEach{item ->
+                        Row (
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(horizontal = 4.dp)
+                        ) {
+                            RadioButton(
+                                selected = selectedJK ==item,
+                                onClick = {selectedJK = item}
+                            )
+                            Text(text = item)
+                        }
+                    }
+                }
+                Text(
+                    text = "Status Perkawinan",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    statusPerkawinan.forEach { item ->
+                        Row(
+                        verticalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .weight(1f),
+                            .padding(horizontal = 4.dp)
+                        ) {
+                            RadioButton(
+                                slected = selectedStatus ==item,
+                                onClick = {selectedStatus = item}
+                            )
+                        Text(text = item)
+                    }
+                    }
+                }
+                Text(
+                    text = "Alamat",
+                    fontWeight = FontWeight
                 )
             }
         }

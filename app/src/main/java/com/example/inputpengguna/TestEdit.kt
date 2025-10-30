@@ -1,12 +1,15 @@
 package com.example.inputpengguna
 
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.semantics.Role.Companion.RadioButton
 
 @Composable
@@ -60,5 +63,15 @@ fun FormDataDiri(modifier: Modifier
         onValueChange = {
             textAlamat = it
         }
+    )
+
+    HorizontalDivider(
+        modifier = Modifier.padding(
+            bottom = dimensionResource(id = R.dimen.padding_medium),
+            top = dimensionResource(
+            id = R.dimen.padding_medium
+        )),
+        thickness = dimensionResource(1dp),
+        color = Color.DarkGray
     )
 }

@@ -7,12 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role.Companion.RadioButton
 
 @Composable
 fun FormDataDiri(modifier: Modifier
 ) {
     var textName by remember {mutableStateOf(value = "")}
-    var testAlamat by remember { mutableStateOf(value= "") }
+    var textAlamat by remember { mutableStateOf(value= "") }
     var textJk by remember { mutableStateOf(value = "") }
 
     var nama by remember { mutableStateOf(value = "") }
@@ -24,7 +25,7 @@ fun FormDataDiri(modifier: Modifier
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        OutlinedTextField(
+        outlinedTextField(
             valur = textNama,
             singLine = true,
             shape = MaterialTheme.shapes.large,
@@ -40,8 +41,18 @@ fun FormDataDiri(modifier: Modifier
                 Row(modifier = Modifier.selectable(
                     selected = textJk == item,
                     onClick = {textJk = item}
-                ))
+                ), verticalAlignment = Alignment.CenterVertically)
+                RadioButton(
+                    selected = textJk ==item,
+                    onClick = {
+                        textJk = item
+                    }
+                )
+                Text(text = item)
             }
         }
     }
+    outlinedTextField(
+        value = textAlamat, 
+    )
 }

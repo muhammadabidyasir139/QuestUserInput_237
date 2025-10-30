@@ -30,9 +30,9 @@ fun FormDataDiri(modifier: Modifier
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        outlinedTextField(
-            valur = textNama,
-            singLine = true,
+        OutlinedTextField(
+            value = textNama,
+            singleLine = true,
             shape = MaterialTheme.shapes.large,
             modifier = Modifier.width(width = 250.dp),
             label = {Text(text = "Nama Lengkap")},
@@ -88,4 +88,13 @@ fun FormDataDiri(modifier: Modifier
     ) {
         Text(text = stringResource(id = R.string.submit))
     }
+
+    HorizontalDivider(
+        modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium),
+            top = dimensionResource(
+                id = R.dimen.padding_medium
+
+            )
+        )
+    )
 }

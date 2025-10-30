@@ -1,5 +1,6 @@
 package com.example.inputpengguna
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -73,5 +74,14 @@ fun FormDataDiri(modifier: Modifier
         )),
         thickness = dimensionResource(1dp),
         color = Color.DarkGray
+    )
+
+    Button(
+        modifier = Modifier.fillMaxWidth(fraction = 1f),
+        enabled = textAlamat.isNotEmpty(),
+        onClick = {
+            nama=textName,
+            jenis=textJk
+        }
     )
 }

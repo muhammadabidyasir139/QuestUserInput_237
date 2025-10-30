@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.RadioButton
 
 @Composable
@@ -80,8 +81,11 @@ fun FormDataDiri(modifier: Modifier
         modifier = Modifier.fillMaxWidth(fraction = 1f),
         enabled = textAlamat.isNotEmpty(),
         onClick = {
-            nama=textName,
+            nama=textName
             jenis=textJk
+            alamat=textAlamat
         }
-    )
+    ) {
+        Text(text = stringResource(id = R.string.submit))
+    }
 }

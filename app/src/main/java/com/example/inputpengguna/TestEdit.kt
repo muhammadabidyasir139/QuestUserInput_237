@@ -1,5 +1,6 @@
 package com.example.inputpengguna
 
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
@@ -33,5 +34,14 @@ fun FormDataDiri(modifier: Modifier
                 textName = it
             }
         )
+        Row {
+            gender.forEach {
+                item ->
+                Row(modifier = Modifier.selectable(
+                    selected = textJk == item,
+                    onClick = {textJk = item}
+                ))
+            }
+        }
     }
 }

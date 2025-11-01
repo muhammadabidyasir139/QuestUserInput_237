@@ -73,7 +73,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = "Nama Lengkap",
+                    text = "NAMA LENGKAP",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )

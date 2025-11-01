@@ -34,7 +34,7 @@ import androidx.compose.material3.ButtonDefaults
 fun FormDataDiri(modifier: Modifier = Modifier) {
     var textName by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
-    var selectedJK by remember { mutableStateOf<String?>(null) } // perbaiki penulisan
+    var selectedJK by remember { mutableStateOf<String?>(null) }
     var selectedStatus by remember { mutableStateOf<String?>(null) }
 
     val gender = listOf("Laki-laki", "Perempuan")
